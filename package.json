@@ -17,6 +17,13 @@
         "command": "a11y-refactoring.a11y",
         "title": "a11y"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "a11y-refactoring.a11y",
+        "key": "ctrl+shift+p",
+        "when": "editorTextFocus"
+      }
     ]
   },
   "scripts": {
