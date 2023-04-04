@@ -3,6 +3,21 @@
 const vscode = require('vscode');
 const fs = require("fs");
 
+function addLangAttr(html) {
+	const regex = /<html\b[^>]*>/i;
+	const langAttr = ' lang=""';
+	if (!regex.test(html)) {
+	  return html;
+	}
+	return html.replace(regex, match => {
+	  if (match.includes("lang")) {
+		return match;
+	  }
+	  const index = match.lastIndexOf(">");
+	  return match.slice(0, index) + langAttr + match.slice(index);
+	});
+  }
+
 async function writeToFile(filePath, text) {
   fs.writeFile(filePath, text, (err) => {
     if (err) {
@@ -14,7 +29,7 @@ async function writeToFile(filePath, text) {
 }
 
 
-function addAltTags(html) {
+function addAltAttr(html) {
 	return html.replace(/<img(?![^>]*alt=)[^>]*>/gi, match => match.replace(/\/?>/, ' alt=""$&'));
 }
 
@@ -34,10 +49,16 @@ function accessOpenedFile() {
 	console.log(document.fileName);
 
 	let html = document.getText();
-	const htmlComAltTags = addAltTags(html);
-	console.log('htmlComAltTags');
-	console.log(htmlComAltTags);
-	writeToFile(document.fileName, htmlComAltTags);
+
+	const htmlWithAltAttr = addAltAttr(html);
+	console.log('htmlWithAltAttr');
+	console.log(htmlWithAltAttr);
+	
+	const htmlWithLangAttr = addLangAttr(htmlWithAltAttr)
+	console.log('htmlWithLangAttr');
+	console.log(htmlWithLangAttr);
+
+	writeToFile(document.fileName, htmlWithLangAttr);
 
 }
 
@@ -64,7 +85,6 @@ function activate(context) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from a11y-refactoring!');
 	});
-
 	accessOpenedFile();
 
 	context.subscriptions.push(disposable);
