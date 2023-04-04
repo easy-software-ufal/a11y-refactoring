@@ -1,25 +1,15 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
-
-// async function escreverNoArquivo(caminhoArquivo, texto) {
-// 	const document = await vscode.workspace.openTextDocument(caminhoArquivo, { overwrite: true });
-// 	const editor = await vscode.window.showTextDocument(document, { preview: false });
-// 	const lastLine = editor.document.lineAt(editor.document.lineCount - 1);
-// 	const lastLineRange = new vscode.Range(lastLine.range.end, lastLine.range.end);
-// 	await editor.edit(editBuilder => {
-// 	  editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), lastLineRange.end), texto);
-// 	});
-//   }  
 const fs = require("fs");
 
-async function writeToFile(caminhoArquivo, texto) {
-  fs.writeFile(caminhoArquivo, texto, (err) => {
+async function writeToFile(filePath, text) {
+  fs.writeFile(filePath, text, (err) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(`O arquivo ${caminhoArquivo} foi salvo com sucesso.`);
+    console.log(`O arquivo ${filePath} foi salvo com sucesso.`);
   });
 }
 
