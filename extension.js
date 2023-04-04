@@ -3,51 +3,46 @@
 const vscode = require('vscode');
 const fs = require("fs");
 
+async function getParameter() {
+	try {
+		const parameter = await vscode.window.showInputBox({
+			prompt: 'Informe o idioma da página:',
+			placeHolder: 'Exemplo: pt-BR'
+		});
+		console.log(`parameter: ${parameter}`);
+		return parameter;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 function addTargetBlank(html) {
-	const regex = /<a(?!.*href\s*=\s*(["'])#.*\1)[^>]*>/g;
-	return html.replace(regex, match => {
-	  if (match.includes('target=')) {
-		return match;
-	  } else {
-		return match.replace('>', ' target="_blank">');
-	  }
-	});
-  }
-  
+    const regex = /<a\b(?![^>]*\bhref\s*=\s*(["'])#.*\1)[^>]*>(?!<\/a>)/g;
+    return html.replace(regex, match => {
+        if (match.includes('target=')) {
+            return match;
+        } else {
+            return match.replace('>', ' target="_blank">');
+        }
+    });
+}
 
 function addSummaryAttr(html) {
 	const regex = /<table(?![^>]*\bsummary=)[^>]*>/g;
 	return html.replace(regex, match => match.replace(">", " summary" + (match.endsWith("/") ? "" : '=""') + ">"));
 }
 
-// function addLangAttrWithParams(html, lang) {
-// 	const regex = /<html(?:\s[^>]*?)?>/;
-// 	const match = html.match(regex);
-// 	if (match) {
-// 		const htmlTag = match[0];
-// 		if (!htmlTag.includes("lang=")) {
-// 			const newHtmlTag = htmlTag.replace(">", ` lang="${lang}">`);
-// 			return html.replace(regex, newHtmlTag);
-// 		}
-// 	}
-// 	return html;
-// }
-
-// const novoHtml = addLangAttrWithParams(html, "en");
-
-function addLangAttr(html) {
-	const regex = /<html\b[^>]*>/i;
-	const langAttr = ' lang=""';
-	if (!regex.test(html)) {
-		return html;
-	}
-	return html.replace(regex, match => {
-		if (match.includes("lang")) {
-			return match;
+function addLangAttrWithParams(html, lang) {
+	const regex = /<html(?:\s[^>]*?)?>/;
+	const match = html.match(regex);
+	if (match) {
+		const htmlTag = match[0];
+		if (!htmlTag.includes("lang=")) {
+			const newHtmlTag = htmlTag.replace(">", ` lang="${lang}">`);
+			return html.replace(regex, newHtmlTag);
 		}
-		const index = match.lastIndexOf(">");
-		return match.slice(0, index) + langAttr + match.slice(index);
-	});
+	}
+	return html;
 }
 
 async function writeToFile(filePath, text) {
@@ -83,23 +78,18 @@ function accessOpenedFile() {
 	let html = document.getText();
 
 	const htmlWithAltAttr = addAltAttr(html);
-	console.log('htmlWithAltAttr');
-	console.log(htmlWithAltAttr);
 
-	const htmlWithLangAttr = addLangAttr(htmlWithAltAttr)
-	console.log('htmlWithLangAttr');
-	console.log(htmlWithLangAttr);
-	
-	const htmlWithSummaryAttr = addSummaryAttr(htmlWithLangAttr)
-	console.log('htmlWithSummaryAttr');
-	console.log(htmlWithSummaryAttr);
-	
-	const htmlWithTargetBlank = addTargetBlank(htmlWithSummaryAttr)
-	console.log('htmlWithTargetBlank');
-	console.log(htmlWithTargetBlank);
+	console.log('antes de chamar a getParameter');
+	getParameter().then((param) => {
+		const htmlWithLangAttr = addLangAttrWithParams(htmlWithAltAttr, param);
+		const htmlWithSummaryAttr = addSummaryAttr(htmlWithLangAttr);
+		const htmlWithTargetBlank = addTargetBlank(htmlWithSummaryAttr);
 
-	writeToFile(document.fileName, htmlWithTargetBlank);
-
+		console.log('salvando arquivo...');
+		writeToFile(document.fileName, htmlWithTargetBlank);
+		console.log('arquivo salvo');
+	});
+	console.log('depois de chamar a getParameter');
 }
 
 
@@ -123,10 +113,10 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from a11y-refactoring!');
+		vscode.window.showInformationMessage('a11y-refactoring is running!');
 	});
-	accessOpenedFile();
 
+	accessOpenedFile();
 	context.subscriptions.push(disposable);
 }
 
