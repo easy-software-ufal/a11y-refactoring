@@ -3,29 +3,61 @@
 const vscode = require('vscode');
 const fs = require("fs");
 
+function addTargetBlank(html) {
+	const regex = /<a(?!.*href\s*=\s*(["'])#.*\1)[^>]*>/g;
+	return html.replace(regex, match => {
+	  if (match.includes('target=')) {
+		return match;
+	  } else {
+		return match.replace('>', ' target="_blank">');
+	  }
+	});
+  }
+  
+
+function addSummaryAttr(html) {
+	const regex = /<table(?![^>]*\bsummary=)[^>]*>/g;
+	return html.replace(regex, match => match.replace(">", " summary" + (match.endsWith("/") ? "" : '=""') + ">"));
+}
+
+// function addLangAttrWithParams(html, lang) {
+// 	const regex = /<html(?:\s[^>]*?)?>/;
+// 	const match = html.match(regex);
+// 	if (match) {
+// 		const htmlTag = match[0];
+// 		if (!htmlTag.includes("lang=")) {
+// 			const newHtmlTag = htmlTag.replace(">", ` lang="${lang}">`);
+// 			return html.replace(regex, newHtmlTag);
+// 		}
+// 	}
+// 	return html;
+// }
+
+// const novoHtml = addLangAttrWithParams(html, "en");
+
 function addLangAttr(html) {
 	const regex = /<html\b[^>]*>/i;
 	const langAttr = ' lang=""';
 	if (!regex.test(html)) {
-	  return html;
+		return html;
 	}
 	return html.replace(regex, match => {
-	  if (match.includes("lang")) {
-		return match;
-	  }
-	  const index = match.lastIndexOf(">");
-	  return match.slice(0, index) + langAttr + match.slice(index);
+		if (match.includes("lang")) {
+			return match;
+		}
+		const index = match.lastIndexOf(">");
+		return match.slice(0, index) + langAttr + match.slice(index);
 	});
-  }
+}
 
 async function writeToFile(filePath, text) {
-  fs.writeFile(filePath, text, (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(`O arquivo ${filePath} foi salvo com sucesso.`);
-  });
+	fs.writeFile(filePath, text, (err) => {
+		if (err) {
+			console.error(err);
+			return;
+		}
+		console.log(`O arquivo ${filePath} foi salvo com sucesso.`);
+	});
 }
 
 
@@ -53,12 +85,20 @@ function accessOpenedFile() {
 	const htmlWithAltAttr = addAltAttr(html);
 	console.log('htmlWithAltAttr');
 	console.log(htmlWithAltAttr);
-	
+
 	const htmlWithLangAttr = addLangAttr(htmlWithAltAttr)
 	console.log('htmlWithLangAttr');
 	console.log(htmlWithLangAttr);
+	
+	const htmlWithSummaryAttr = addSummaryAttr(htmlWithLangAttr)
+	console.log('htmlWithSummaryAttr');
+	console.log(htmlWithSummaryAttr);
+	
+	const htmlWithTargetBlank = addTargetBlank(htmlWithSummaryAttr)
+	console.log('htmlWithTargetBlank');
+	console.log(htmlWithTargetBlank);
 
-	writeToFile(document.fileName, htmlWithLangAttr);
+	writeToFile(document.fileName, htmlWithTargetBlank);
 
 }
 
