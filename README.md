@@ -37,3 +37,5 @@ Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que cas
 4. Agora pressione `ctrl+shift+p` e informe o idioma da página HTML. Digite `enter` e o código será alterado
 
 ![newrecorder](https://user-images.githubusercontent.com/36773331/229955421-031cbf60-9f92-4154-8ea4-c3ef6979adf0.gif)
+
+### [Templates criados até agora](https://www.canva.com/design/DAFfPQGwUbc/rkUmM4NzezLbajuivT8w_Q/edit?utm_content=DAFfPQGwUbc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
