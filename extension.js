@@ -3,7 +3,11 @@
 const vscode = require('vscode');
 const fs = require("fs");
 
-async function getParameter() {
+/**
+ * Receives language parameter via input box
+ * @returns A string with the language entered by the user
+ */
+async function getLangParameter() {
 	try {
 		const parameter = await vscode.window.showInputBox({
 			prompt: 'Informe o idioma da página:',
@@ -16,6 +20,11 @@ async function getParameter() {
 	}
 }
 
+/**
+ * Function responsible for adding target="_blank" to hyperlink tags
+ * @param {*} html A string containing the html of the page
+ * @returns A string with the html after adding the target attribute
+ */
 function addTargetBlank(html) {
     const regex = /<a\b(?![^>]*\bhref\s*=\s*(["'])#.*\1)[^>]*>(?!<\/a>)/g;
     return html.replace(regex, match => {
@@ -27,11 +36,23 @@ function addTargetBlank(html) {
     });
 }
 
+/**
+ * Function responsible for adding summary attribute to table tags
+ * @param {*} html A string containing the html of the page
+ * @returns A string with the html after adding the summary attribute
+ */
 function addSummaryAttr(html) {
 	const regex = /<table(?![^>]*\bsummary=)[^>]*>/g;
 	return html.replace(regex, match => match.replace(">", " summary" + (match.endsWith("/") ? "" : '=""') + ">"));
 }
 
+/**
+ * Function responsible for adding the 
+ * lang attribute to the main html tag
+ * @param {*} html A string containing the html of the page
+ * @param {*} lang A string containing the language of the page
+ * @returns A string with the html after adding the lang attribute
+ */
 function addLangAttrWithParams(html, lang) {
 	const regex = /<html(?:\s[^>]*?)?>/;
 	const match = html.match(regex);
@@ -45,8 +66,14 @@ function addLangAttrWithParams(html, lang) {
 	return html;
 }
 
-async function writeToFile(filePath, text) {
-	fs.writeFile(filePath, text, (err) => {
+/**
+ * Function responsible for writing the string 
+ * with the new html into a file
+ * @param {*} filePath A string containing the file path
+ * @param {*} newHtml A string containing the refactored html
+ */
+async function writeToFile(filePath, newHtml) {
+	fs.writeFile(filePath, newHtml, (err) => {
 		if (err) {
 			console.error(err);
 			return;
@@ -55,11 +82,20 @@ async function writeToFile(filePath, text) {
 	});
 }
 
-
+/**
+ * Function responsible for adding the alternative 
+ * text attribute to a string with the page's html
+ * @param {*} html A string containing the html of the page
+ * @returns A string with html after adding alt attribute to images
+ */
 function addAltAttr(html) {
 	return html.replace(/<img(?![^>]*alt=)[^>]*>/gi, match => match.replace(/\/?>/, ' alt=""$&'));
 }
 
+/**
+ * Function responsible for accessing a file opened in the VSCode editor
+ * @returns 
+ */
 function accessOpenedFile() {
 	const editor = vscode.window.activeTextEditor;
 
@@ -70,26 +106,26 @@ function accessOpenedFile() {
 
 	const document = editor.document;
 
-	console.log('getText');
-	console.log(document.getText());
-	console.log('filename');
-	console.log(document.fileName);
+	fileRefactor(document);
+}
 
+/**
+ * Function responsible for refactoring an html 
+ * file using functions declared elsewhere
+ * @param {*} document An html file
+ */
+function fileRefactor(document) {
 	let html = document.getText();
 
 	const htmlWithAltAttr = addAltAttr(html);
 
-	console.log('antes de chamar a getParameter');
-	getParameter().then((param) => {
+	getLangParameter().then((param) => {
 		const htmlWithLangAttr = addLangAttrWithParams(htmlWithAltAttr, param);
 		const htmlWithSummaryAttr = addSummaryAttr(htmlWithLangAttr);
 		const htmlWithTargetBlank = addTargetBlank(htmlWithSummaryAttr);
 
-		console.log('salvando arquivo...');
 		writeToFile(document.fileName, htmlWithTargetBlank);
-		console.log('arquivo salvo');
 	});
-	console.log('depois de chamar a getParameter');
 }
 
 
