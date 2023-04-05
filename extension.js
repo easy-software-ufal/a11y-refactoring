@@ -26,15 +26,16 @@ async function getLangParameter() {
  * @returns A string with the html after adding the target attribute
  */
 function addTargetBlank(html) {
-    const regex = /<a\b(?![^>]*\bhref\s*=\s*(["'])#.*\1)[^>]*>(?!<\/a>)/g;
-    return html.replace(regex, match => {
-        if (match.includes('target=')) {
-            return match;
-        } else {
-            return match.replace('>', ' target="_blank">');
-        }
-    });
+	const regex = /<a\b(?![^>]*\bhref\s*=\s*(["'])#.*\1)[^>]*>(?!<\/a>)/g;
+	return html.replace(regex, match => {
+		if (match.includes('target=')) {
+			return match;
+		} else {
+			return match.replace('>', ' target="_blank" alt="Link para site externo (abre numa nova janela)">');
+		}
+	});
 }
+
 
 /**
  * Function responsible for adding summary attribute to table tags
