@@ -31,8 +31,8 @@ Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que cas
   - Segundo a [WCAG 2.0 Critério de Sucesso 3.2.5](https://www.w3.org/Translations/WCAG20-pt-br/#consistent-behavior), o usuário deve ser informado por meio de texto do link caso seja necessário sair da página, assim ele pode decidir se quer acessar o link e saberá que se trata de uma nova aba ou janela. Essa informação é definida pela <i>tag</i> `<a>`.
   
 ## ⚙️ Como executar a ferramenta localmente
-1. Acesse o diretório `a11y-refactoring` e abra o terminal
-2. Use o comando `code a11y-refactoring`
+1. Faça o clone do projeto e rode o `npm i` no diretório criado
+2. Abra o VSCode para o diretório `a11y-refactoring`
 3. Use a tecla `F5` para executar sua extensão localmente e outra janela aparecerá 
 4. Agora pressione `ctrl+shift+p` e informe o idioma da página HTML. Digite `enter` e o código será alterado
 
