@@ -10,6 +10,9 @@ function insertCharsetMeta(html) {
 	if (match) {
 	  const head = match[0];
 	  const content = match[2];
+
+	  if(content.includes('<meta charset="UTF-8">')) return html;
+
 	  const newContent = `<head>${content}<meta charset="UTF-8"></head>`;
 	  const newHtml = html.replace(head, newContent);
 	  return newHtml;
