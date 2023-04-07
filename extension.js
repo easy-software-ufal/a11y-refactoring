@@ -3,6 +3,37 @@
 const vscode = require('vscode');
 const fs = require("fs");
 
+function insertCharsetMeta(html) {
+	const regex = /(<head[^>]*>)([\s\S]*?)(<\/head>)/i;
+	const match = html.match(regex);
+  
+	if (match) {
+	  const head = match[0];
+	  const content = match[2];
+	  const newContent = `<head>${content}<meta charset="UTF-8"></head>`;
+	  const newHtml = html.replace(head, newContent);
+	  return newHtml;
+	} else {
+	  return html;
+	}
+  }
+  
+
+// function inputInsideLabel(html) {
+// 	const regex = /(<label\b[^>]*>)([\s\S]*?)(<\/label>)(?:\s*<input\b[^>]*>|\s*(?=<label\b))/g;
+// 	return html.replace(regex, (match, openTag, content, closeTag) => {
+// 	  const inputRegex = /(<input\b[^>]*>)/;
+// 	  const inputMatch = inputRegex.exec(match);
+// 	  if (inputMatch) {
+// 		const inputTag = inputMatch[1];
+// 		const newContent = content.replace(inputTag, '');
+// 		return `${openTag}${inputTag}${newContent}${closeTag}`;
+// 	  } else {
+// 		return match;
+// 	  }
+// 	});
+//   } 
+
 /**
  * Receives language parameter via input box
  * @returns A string with the language entered by the user
@@ -31,7 +62,7 @@ function addTargetBlank(html) {
 		if (match.includes('target=')) {
 			return match;
 		} else {
-			return match.replace('>', ' target="_blank" alt="Link para site externo (abre numa nova janela)">');
+			return match.replace('>', ' target="_blank" title="Link para site externo (abre numa nova janela)">');
 		}
 	});
 }
@@ -46,6 +77,33 @@ function addSummaryAttr(html) {
 	const regex = /<table(?![^>]*\bsummary=)[^>]*>/g;
 	return html.replace(regex, match => match.replace(">", " summary" + (match.endsWith("/") ? "" : '=""') + ">"));
 }
+
+function insertTableTags(html) {
+	const regex = /<table\b[^>]*>(.*?)<\/table>/s;
+	const match = html.match(regex);
+  
+	if (!match) {
+	  return html;
+	}
+  
+	const tableContent = match[1];
+  
+	if (/thead/i.test(tableContent) && /tbody/i.test(tableContent)) {
+	  return html;
+	}
+  
+	const newTableContent = `
+	  <thead>
+		${/tr/i.test(tableContent) ? tableContent.match(/<tr[\s\S]*?<\/tr>/i) : ''}
+	  </thead>
+	  <tbody>
+		${/tr/i.test(tableContent) ? tableContent.replace(/<tr[\s\S]*?<\/tr>/i, '') : tableContent}
+	  </tbody>
+	`;
+  
+	return html.replace(regex, `<table>${newTableContent}</table>`);
+  }
+  
 
 /**
  * Function responsible for adding the 
@@ -122,10 +180,14 @@ function fileRefactor(document) {
 
 	getLangParameter().then((param) => {
 		const htmlWithLangAttr = addLangAttrWithParams(htmlWithAltAttr, param);
-		const htmlWithSummaryAttr = addSummaryAttr(htmlWithLangAttr);
-		const htmlWithTargetBlank = addTargetBlank(htmlWithSummaryAttr);
+		// const htmlWithSummaryAttr = addSummaryAttr(htmlWithLangAttr);
+		const htmlWithTableTags = insertTableTags(htmlWithLangAttr);
+		console.log(htmlWithTableTags);
+		const htmlWithTargetBlank = addTargetBlank(htmlWithTableTags);
+		const htmlWithMetaCharset = insertCharsetMeta(htmlWithTargetBlank);
+		// const htmlWithInputIntoLabel = inputInsideLabel(htmlWithTargetBlank);
 
-		writeToFile(document.fileName, htmlWithTargetBlank);
+		writeToFile(document.fileName, htmlWithMetaCharset);
 	});
 }
 
