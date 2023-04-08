@@ -21,7 +21,8 @@ Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que cas
   - No início do documento HTML podemos definir a linguagem da página usando `<html lang='pt-br'>`. Essa definição é um benefício não somente para tecnologias assistivas, mas também para SEO e ferramentas de tradução. No contexto das tecnologias assistivas, é possível definir o perfil de voz e conjunto de caracteres por meio da definição do atributo `lang`.
   
 - Texto alternativo para tabelas
-  - O atributo `summary` funciona como um resumo ou texto alternativo para a tabela, indicando mais detalhes para o usuário. Esse atributo é associado à <i>tag</i> `<table>`.
+  - Anteriormente estávamos usando o atributo `summary`, mas ele foi considerado obsoleto a partir do HTML5. O motivo é que este atributo não estava sendo utilizado de forma consistente pelos desenvolvedores web e também não era amplamente suportado pelos navegadores. 
+  - Em vez disso, estamos usando os elementos semânticos `<thead>` e `<tbody>` que são parte da estrutura HTML da tabela e ajudam a organizar o conteúdo em seções lógicas. Isso é importante para usuários que utilizam tecnologias assistivas, como leitores de tela, que podem navegar pelas seções da tabela com mais facilidade. O uso desses elementos também ajuda a deixar a tabela mais clara e fácil de entender visualmente.
 
 - Texto alternativo para imagens
   - As imagens devem possuir o atributo `alt` com um texto alternativo que possua uma descrição do seu conteúdo. Se a tag `<img>` tiver apenas o atributo `src`, o leitor pode ou não ler o nome do arquivo, podendo ser bem confuso.
