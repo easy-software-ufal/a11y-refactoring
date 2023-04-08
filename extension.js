@@ -3,6 +3,12 @@
 const vscode = require('vscode');
 const fs = require("fs");
 
+/**
+ * Insert meta charset tag if it doesn't already 
+ * exist in the HTML. If it already exists, it will not add it again.
+ * @param {*} html A string containing the page's HTML
+ * @returns The page's HTML as a string with the meta charset tag
+ */
 function insertCharsetMeta(html) {
 	const regex = /(<head[^>]*>)([\s\S]*?)(<\/head>)/i;
 	const match = html.match(regex);
