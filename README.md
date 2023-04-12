@@ -1,6 +1,10 @@
 # :bulb: Plugin de refatoramento para acessibilidade web
 O `a11y-refactoring` é um plugin para [VSCode](https://code.visualstudio.com/) com o objetivo de refatorar um código HTML em que, caso não haja atributos essenciais para leitores de tela em algumas <i>tags</i> HTML, insira-os.
 
+Inicialmente o plugin está focado no HTML semântico. O HTML semântico é um importante primeiro passo na construção de páginas web acessíveis, mas nem sempre é suficiente para atender a todas as necessidades de acessibilidade. Em alguns casos, é necessário utilizar outras tecnologias, como as diretrizes de acessibilidade WCAG (Web Content Accessibility Guidelines) e as especificações de acessibilidade do WAI-ARIA (Web Accessibility Initiative - Accessible Rich Internet Applications).
+
+Ainda assim, antes de entrar de fato no uso de diretrizes como a WCAG e especificações como WAI-ARIA, é importante que o ponto de partida seja o HTML semântico. Considerando isso, [criamos alguns templates que já estão sendo tratados pelo `a11y-refactoring`](https://github.com/easy-software-ufal/a11y-refactoring/blob/master/templates.md).
+
 ## :wrench: Acessibilidade no desenvolvimento
 Existem boas práticas para tornar uma página mais acessível. No entanto, grande parte da acessibilidade depende da utilização correta de elementos HTML e seus valores semânticos. Elementos semânticos trazem informações adicionais a leitores de tela e outras ferramentas, facilitando a navegação no site.
 
@@ -38,5 +42,3 @@ Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que cas
 4. Agora pressione `ctrl+shift+p` e informe o idioma da página HTML. Digite `enter` e o código será alterado
 
 ![newrecorder](https://user-images.githubusercontent.com/36773331/229955421-031cbf60-9f92-4154-8ea4-c3ef6979adf0.gif)
-
-### [Templates criados até agora](https://www.canva.com/design/DAFfPQGwUbc/rkUmM4NzezLbajuivT8w_Q/edit?utm_content=DAFfPQGwUbc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
