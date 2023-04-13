@@ -4,6 +4,10 @@ Os testes automatizados foram realizados em dois momentos:
 2. Depois de usar o `a11y-refactoring`
 Os gifs com os resultados estão salvos na pasta `results`. Os testes estão salvos em `results/accessibility` para testes de acessibilidade e `results/html` para testes de validação HTML.
 
+## Sites estáticos
+- [PetLar](http://petlar-site.s3-website-us-east-1.amazonaws.com/)
+- [Doce Tentação](http://docetentacao.s3-website-us-east-1.amazonaws.com/)
+
 ## Ferramentas online utilizadas
 ### HTML
 #### W3C Validator (ou validador do W3C)
