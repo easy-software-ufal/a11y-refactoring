@@ -9,23 +9,23 @@ Além disso, o HTML semântico também ajuda os desenvolvedores a criar páginas
 ### Código inicial
 ![image](https://user-images.githubusercontent.com/36773331/231592311-58494d07-eb21-48e6-acd0-04ac71780ba0.png)
 ### Após o uso do `a11y-refactoring`
-![image](https://user-images.githubusercontent.com/36773331/231592362-2b9a5818-60db-44da-bddf-6fbd0673ee31.png)
-- _atrRef_ contém uma string com 0 ou mais caracteres representando o link de referência
-- _atrTarget_ e content contém uma string com 0 ou mais caracteres
+![image](https://user-images.githubusercontent.com/36773331/232590738-a5eb95ef-8bfa-4e2e-90d4-b1cc637f8549.png)
+- _attrRef_ contém uma string com 0 ou mais caracteres representando o link de referência
+- _attrTarget_ e content contém uma string com 0 ou mais caracteres
 
 ## Atributo _lang_
 ### Código inicial
-![image](https://user-images.githubusercontent.com/36773331/231593399-f8629c65-9f03-4190-a5fc-891fae7de7ab.png)
+![image](https://user-images.githubusercontent.com/36773331/232590932-487b114b-1212-4f9a-a512-2c0dd310c14f.png)
 ### Após o uso do `a11y-refactoring`
-![image](https://user-images.githubusercontent.com/36773331/231593481-21af23df-8384-467f-b5a1-c0a676815dd2.png)
-- _atrLang_ contém uma string com 0 ou mais caracteres
+![image](https://user-images.githubusercontent.com/36773331/232590994-221f268c-356d-4fab-baad-e6f39adfec04.png)
+- _attrLang_ contém uma string com 0 ou mais caracteres
 
 ## Atributo _alt_
 ### Código inicial
-![image](https://user-images.githubusercontent.com/36773331/231593771-cf01f38c-ec10-4ff3-9491-c147cabc347d.png)
+![image](https://user-images.githubusercontent.com/36773331/232591105-0c0736e8-ce51-402c-b23f-3ba97dbef881.png)
 ### Após o uso do `a11y-refactoring`
-![image](https://user-images.githubusercontent.com/36773331/231593849-a97c21bd-f500-410c-87ba-6c7f98b412c6.png)
-- _atrSrc_ e _atrAlt_ contém uma string com 0 ou mais caracteres
+![image](https://user-images.githubusercontent.com/36773331/232591174-74f5cab8-d694-4944-8d6c-743d2be50eb8.png)
+- _attrSrc_ e _attrAlt_ contém uma string com 0 ou mais caracteres
 
 ## Tags _thead_ e _tbody_ para tabelas
 ### Código inicial
