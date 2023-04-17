@@ -32,5 +32,5 @@ Além disso, o HTML semântico também ajuda os desenvolvedores a criar páginas
 ![image](https://user-images.githubusercontent.com/36773331/231594524-3f3075c4-492b-4148-a689-a2f1dd306f7e.png)
 ### Após o uso do `a11y-refactoring`
 ![image](https://user-images.githubusercontent.com/36773331/231594348-7d2648ae-33c3-4671-892a-42da9a3dd317.png)
-- _tagHead_ e _tagBody_ representam as tags _<thead>_ e _<tbody>_, respectivamente
+- _tagHead_ e _tagBody_ representam as tags _thead_ e _tbody_, respectivamente
   - Essas tags são inseridas de acordo com as tags _<th>_ e _<td>_ internas
