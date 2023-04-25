@@ -11,7 +11,6 @@ Os gifs com os resultados estão salvos na pasta `results`. Os testes estão sal
 ## Sites estáticos com o uso do plugin
 - [PetLar](http://petlar.site.s3-website-us-east-1.amazonaws.com/)
 - [Doce Tentação](http://doce.tentacao.s3-website-us-east-1.amazonaws.com/)
-- 
 
 ## Ferramentas online utilizadas
 ### HTML
