@@ -4,9 +4,14 @@ Os testes automatizados foram realizados em dois momentos:
 2. Depois de usar o `a11y-refactoring`
 Os gifs com os resultados estão salvos na pasta `results`. Os testes estão salvos em `results/accessibility` para testes de acessibilidade e `results/html` para testes de validação HTML.
 
-## Sites estáticos
+## Sites estáticos sem o uso do plugin
 - [PetLar](http://petlar-site.s3-website-us-east-1.amazonaws.com/)
 - [Doce Tentação](http://docetentacao.s3-website-us-east-1.amazonaws.com/)
+
+## Sites estáticos com o uso do plugin
+- [PetLar](http://petlar.site.s3-website-us-east-1.amazonaws.com/)
+- [Doce Tentação](http://doce.tentacao.s3-website-us-east-1.amazonaws.com/)
+- 
 
 ## Ferramentas online utilizadas
 ### HTML
