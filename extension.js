@@ -50,8 +50,8 @@ function insertCharsetMeta(html) {
 async function getLangParameter() {
 	try {
 		const parameter = await vscode.window.showInputBox({
-			prompt: 'Informe o idioma da página:',
-			placeHolder: 'Exemplo: pt-BR'
+			prompt: 'Enter the language of the page:',
+			placeHolder: 'Example: pt-BR'
 		});
 		console.log(`parameter: ${parameter}`);
 		return parameter;
