@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale = 1.0" /><link type="text/css" rel="stylesheet" href="/transparencia/javax.faces.resource/theme.css.faces?ln=primefaces-nova-light" /><link type="text/css" rel="stylesheet" href="/transparencia/javax.faces.resource/components.css.faces;jsessionid=373E518BECB5167E57569B094BA312AE?ln=primefaces&amp;v=7.0" /><script type="text/javascript" src="/transparencia/javax.faces.resource/jquery/jquery.js.faces;jsessionid=373E518BECB5167E57569B094BA312AE?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="/transparencia/javax.faces.resource/jquery/jquery-plugins.js.faces;jsessionid=373E518BECB5167E57569B094BA312AE?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="/transparencia/javax.faces.resource/core.js.faces;jsessionid=373E518BECB5167E57569B094BA312AE?ln=primefaces&amp;v=7.0"></script><script type="text/javascript" src="/transparencia/javax.faces.resource/components.js.faces;jsessionid=373E518BECB5167E57569B094BA312AE?ln=primefaces&amp;v=7.0"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='pt_BR';}</script>
+        <link rel="icon" href="../imgs/favicon.ico" />
+        <title>Portal da Transparência</title>
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="Icon" href="../imgs/header/logo_prefeitura_de_maceio.svg" />
+    <link rel="stylesheet" href="../css/integration.css" />
+    <link rel="StyleSheet" type="text/css" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../resources/fontawesome-free-5.11.2-web/css/fontawesome.css" />
+    <link rel="stylesheet" href="../resources/fontawesome-free-5.11.2-web/css/solid.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+    <script type="text/javascript">
+        PrimeFaces.locales['pt'] = {
+            closeText: 'Fechar',
+            prevText: 'Anterior',
+            nextText: 'Próximo',
+            currentText: 'Atual',
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+                'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+                'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+                'Sexta', 'Sábado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+            weekHeader: 'Semana',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Só Horas',
+            timeText: 'Tempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            ampm: false,
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia',
+            allDayText: 'Todo o Dia'
+        };
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-172004703-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script></head><body>
+    <div class="ui-g-12 color-bord-menu">
+
+
+    <header>
+        <nav class="navbar navbar-expand-sm fixed-top navbar-dark menu-superior">
+
+            <a class="espac-img-prefeitura" href="../pages/homepage.faces"> <img src="../imgs/logo_prefeitura.png" alt="logotipo" class="header-img" />
+            </a>
+            <a href="../pages/homepage.faces"><p class="ajust-text-menu-navegacao-servicos">Portal da Transparência Município de Maceió</p></a>
+
+            <div class="justify-content-end ajeitando-button">
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon ajust-icon-nav"></span>
+                </button>
+            </div>
+<form id="formDownload" name="formDownload" method="post" action="/transparencia/pages/homepage.faces;jsessionid=373E518BECB5167E57569B094BA312AE" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formDownload" value="formDownload" />
+<button id="formDownload:linkBaixarOrganograma" name="formDownload:linkBaixarOrganograma" class="" onclick="PrimeFaces.bcn(this,event,[function(event){PrimeFaces.monitorDownload(start, stop);},function(event){}]);" style="display:none" type="submit"><span class="ui-button-text ui-c">ui-button</span></button><script id="formDownload:linkBaixarOrganograma_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_formDownload_linkBaixarOrganograma",{id:"formDownload:linkBaixarOrganograma"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="4212758750087808719:5071230852860197738" autocomplete="off" />
+</form>
+
+            <div id="menu" class=" espac-itens-menu collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/homepage.faces">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/sobre.faces">Sobre</a>
+                    </li>
+                    
+                    <li class="nav-item" title="Site da Prefeitura">
+                        <a class="nav-link" href="http://www.maceio.al.gov.br/" title="Click aqui para ser redirecinado ao site da prefeitura" target="_blank">Site da Prefeitura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/faleConosco.faces">Fale Conosco</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/despesasReceitaCovid.faces?i=0" target="_blank">COVID-19</a>
+                    </li>
+                    <li class="nav-item"><a id="j_idt10" href="#" class="ui-commandlink ui-widget nav-link" onclick="baixarOrganograma();;PrimeFaces.ab({s:&quot;j_idt10&quot;});return false;">Organograma</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <script type="text/javascript">
+            function baixarOrganograma() {
+                document.getElementById('formDownload:linkBaixarOrganograma').click();
+            }
+        </script>
+    </header>
+    </div>
+    <br /><br /><br /><br />
+        <style type="text/css">
+            .ui-g div {
+                text-align: center;
+            }
+        </style>
+        <div style="width: 100%">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-12 ui-g-nopad" id="center" align="center">
+                    <div id="container" style="width: 100%">
+
+        <div class="ajust-altura jumbotron jumbotron-fluid text-center jumb-homepage">
+
+            <p style="margin-left: 90% !important;" class="versionamento">
+                Versão: 4.0.3-202307030913
+            </p>
+
+            <img src="../imgs/logo.png" alt="Prefeitura de Maceió" class="logo-maceio filter-shadow" />
+
+            <h1 class="titulo-site filter-shadow">Portal da Transparência Municipal</h1>
+
+        </div>
+
+        <section class="sectiontabContent-white ajust-altura-section-home text-center">
+
+            <div id="sectionServicos" class="box-content text-center">
+
+                <div class="servico-box fades-covid zoom covid19">
+                    <a class="no-decor" href="../pages/despesasReceitaCovid.faces?i=0" target="_blank" title="Clique aqui para ser redirecionado para a página do COVID-19">
+                        <div class="icone-covid">
+                            <img src="../imgs/imgCovidd.png" alt="ícone covid-19" />
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/planejamento.faces?i=1" title="Planejamento Orçamentário">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Planejamento Orçamentário
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/programacaoFinanceira.faces?i=1" title="Programação Financeira">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Programação Financeira
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/receita.faces?i=2" title="Receita">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Receita
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/despesas.faces?i=3" title="Despesas">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Despesa
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/servidores.faces?i=4" title="Servidores">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Servidores
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="http://www.licitacao.maceio.al.gov.br/" target="_blank" title="Clique aqui para ser redirecionado ao site licitacao.maceio.al.gov.br">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Licitações
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/contratos.faces?i=7" title="Contratos">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Contratos
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/convenios.faces?i=8" title="Convênios">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Convênios
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/termoParceria.faces?i=9" title="Termos de Parceria">
+                        <div class="icone-termo-parceria">
+                            <img src="../imgs/termo-parceria.svg" alt="Termo de parceria" />
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Termos de Parceria
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/demonstrativos.faces?i=10" title="Demonstrativos Contabéis">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Demonstrativos Contábeis
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/legislacao.faces?i=11" title="Consulta à Legislação">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Consulta à Legislação
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/obras.faces?i=12" title="Obras">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Obras
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/orcamentoCriancaAdolescente.faces?i=1" title="Orçamento da Criança e do Adolescente">
+                        <div class="servico-box-icone" style="font-size: 32px;font-weight: 800;">
+                            OCA
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo" style="font-size: 14px !important;">
+                                Orçamento da Criança e do Adolescente
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/indicesFiscais.faces?i=1" title="Índices Fiscais">
+                        <div class="servico-box-icone" style="font-size: 32px;font-weight: 800;">
+                            IF
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo" style="font-size: 14px !important;">
+                                Índices Fiscais
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/emendaCidada.faces?i=1" title="Emendas Cidadãs">
+                        <div class="servico-box-icone" style="font-size: 32px;font-weight: 800;">
+                            EC
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo" style="font-size: 14px !important;">
+                                Emendas Cidadãs
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="https://in.maceio.al.gov.br/" title="Maceió IN" target="_blank">
+                        <div class="servico-box-icone" style="font-size: 32px;font-weight: 800;">
+                            M-IN
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo" style="font-size: 14px !important;">
+                                Maceió IN
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/conselhos.faces?i=15" title="Conselhos">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Conselhos
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/glossario.faces?i=13" title="Glossário">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-spell-check"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Glossário
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/perguntas.faces?i=14" title="Perguntas Frequentes">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Perguntas Frequentes
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" href="../pages/SIAFIC.faces" title="Contratos">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                SIAFIC
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="servico-box fades zoom">
+                    <a class="no-decor" target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiMWFlMWU1NzMtYmI2MC00MjBlLWFmZjctMjNiNjFiNDk5MjQ0IiwidCI6IjhmN2I0MjQ1LWUzYjQtNGFkYy1iMmRlLWY4ZDM3NmQxMThhZSJ9" title="Painel de Manifestações">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Painel de Manifestações
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="servico-box fades zoom portal-antigo">
+                    <a class="no-decor" href="http://www3.transparencia.maceio.al.gov.br/web/" target="_blank" title="Clique aqui para ser redirecionado ao antigo Portal da Transparência">
+                        <div class="servico-box-icone">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="servico-box-texto">
+                            <div class="titulo">
+                                Portal Versão 2019
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="ui-g-12" id="footer"><html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt18"><link type="text/css" rel="stylesheet" href="/transparencia/javax.faces.resource/theme.css.faces?ln=primefaces-nova-light" /><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='pt_BR';}</script>
+
+    <link rel="StyleSheet" type="text/css" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" /></head><body>
+    <section class="section-white">
+
+        <div class="box-content">
+
+            <h3 class="titulo-sites">Links de Acesso</h3>
+
+            <div id="conteudo-geral">
+
+                <div class="sites-box zoom">
+
+                    <a href="https://www.servicos.maceio.al.gov.br/" target="_blank" class="no-decor">
+                        <div class="sites-box-img">
+                            <img src="../imgs/portalDeServicos.png" alt="Portal de Serviços" />
+                        </div>
+
+                        <div class="sites-box-texto">
+                            <div class="titulo">
+                                Portal de Serviços
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="sites-box zoom">
+
+                    <a href="https://www.ouvidoria.maceio.al.gov.br/" target="_blank" class="no-decor">
+                        <div class="sites-box-img">
+                            <img src="../imgs/ouvidoriaNovo1.png" alt="Site da ouvidoria" />
+                        </div>
+
+                        <div class="sites-box-texto">
+                            <div class="titulo">
+                                Ouvidoria
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="sites-box zoom">
+
+                    <a href="https://www.informa.maceio.al.gov.br" target="_blank" class="no-decor">
+                        <div class="sites-box-img">
+                            <img src="../imgs/informaNovo.png" alt="Informa Maceió" />
+                        </div>
+
+                        <div class="sites-box-texto">
+                            <div class="titulo">
+                                Informa Maceió
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="sites-box zoom">
+
+                    <a href="https://www.participa.maceio.al.gov.br/" target="_blank" class="no-decor">
+                        <div class="sites-box-img">
+                            <img src="../imgs/portalDoCidadao.png" alt="Portal do Cidadão" />
+                        </div>
+
+                        <div class="sites-box-texto">
+                            <div class="titulo">
+                                Participa Maceió
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="sites-box zoom">
+
+                    <a href="https://transparencia.sms.maceio.al.gov.br/" target="_blank" class="no-decor">
+                        <div class="sites-box-img">
+                            <img src="../imgs/transparenciaSaude.png" alt="Transparência Saúde" />
+                        </div>
+
+                        <div class="sites-box-texto">
+                            <div class="titulo">
+                                Transparência Saúde
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="contato">
+
+        <div class="box-content width-contato">
+
+            <div class="row justify-content-center mb-4 mb-md-4 mb-lg-4 mb-xl-4">
+
+                <h3>Contato</h3>
+
+            </div>
+
+            <div class="row no-margin">
+
+                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 social-networks">
+
+                    <h4>Nossas Redes</h4>
+
+                    <ul>
+
+                        <li><a href="https://www.facebook.com/PrefeituraDeMaceio/" target="_blank">
+                            <img src="../imgs/facebook.png" alt="Link da página do Facebook da Prefeitura" class="zoom" /></a>
+                        </li>
+                        <li><a href="https://www.instagram.com/prefeiturademaceio/?hl=pt-br" target="_blank">
+                            <img src="../imgs/twitter.png" alt="Link do perfil da Prefeitura no Twitter" class="zoom" /></a>
+                        </li>
+                        <li><a href="https://twitter.com/prefmaceio" target="_blank">
+                            <img src="../imgs/insta.png" alt="Link do perfil da Prefeitura no instagram" class="zoom" /></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 endereco">
+
+                    <h4>Endereço</h4>
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.0957625117294!2d-35.723990584669785!3d-9.672858704917784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x701456da12fd8fd%3A0xfbe3b3725a897ac8!2sR.%20S%C3%A1%20e%20Albuquerque%2C%20235%20-%20Jaragu%C3%A1%2C%20Macei%C3%B3%20-%20AL%2C%2057022-180!5e0!3m2!1spt-BR!2sbr!4v1573661393472!5m2!1spt-BR!2sbr" height="150" frameborder="0" style="border:0;" title="Endereço da prefeitura de maceió no google maps"></iframe>
+
+                    <p>
+                        Rua Sá e Albuquerque, 235, Jaraguá, Maceió/AL. CEP: 57022-180 <br />
+                        Telefones: 3312-5860 / 3312-5370
+                    </p>
+
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 container">
+                    <div class="row">
+                        <h4>Avaliação do Portal</h4>
+                    </div>
+
+                    <div class="row lead">
+                        <p>Qual é a sua avaliação sobre este portal?</p>
+<form id="novaAvaliacao" name="novaAvaliacao" method="post" action="/transparencia/pages/homepage.faces;jsessionid=373E518BECB5167E57569B094BA312AE" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="novaAvaliacao" value="novaAvaliacao" />
+<span id="novaAvaliacao:j_idt22"></span><script id="novaAvaliacao:j_idt22_s" type="text/javascript">$(function(){PrimeFaces.cw("Growl","widget_novaAvaliacao_j_idt22",{id:"novaAvaliacao:j_idt22",sticky:false,life:6000,escape:true,keepAlive:false,msgs:[]});});</script><div id="novaAvaliacao:j_idt23" class="ui-rating"><div class="ui-rating-star"><a></a></div><div class="ui-rating-star"><a></a></div><div class="ui-rating-star"><a></a></div><div class="ui-rating-star"><a></a></div><div class="ui-rating-star"><a></a></div><input type="hidden" id="novaAvaliacao:j_idt23_input" name="novaAvaliacao:j_idt23_input" autocomplete="off" /></div><script id="novaAvaliacao:j_idt23_s" type="text/javascript">$(function(){PrimeFaces.cw("Rating","widget_novaAvaliacao_j_idt23",{id:"novaAvaliacao:j_idt23",behaviors:{rate:function(ext,event) {PrimeFaces.ab({s:"novaAvaliacao:j_idt23",e:"rate",f:"novaAvaliacao",p:"novaAvaliacao:j_idt23",u:"novaAvaliacao"},ext);}}});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="4212758750087808719:5071230852860197738" autocomplete="off" />
+</form>
+                        <p style="margin-top: 30px">Alguma informação não foi localizada no Portal?<a href="../pages/faleConosco.faces"> Fale Conosco</a></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section></body>
+
+</html>
+    </div>
+    <div class="footer">
+        <div class="footer-img">
+            <img src="../imgs/logo-cidade-inteligente.png" alt="Maceió Cidade Inteligente" />
+        </div>
+        <div class="social text-right text-light">
+            <p>© 2023 DTI (Diretoria de Tecnologia da Informação) Prefeitura Municipal de Maceió.<br />
+                Todos os direitos reservados.</p>
+            <p>Versão: 4.0.3-202307030913</p>
+        </div>
+    </div>
+
+    <script src="../resources/js/bootstrap.js"></script>
+    <script src="https://plugin.handtalk.me/web/latest/handtalk.min.js"></script>
+    <script>
+        var ht = new HT({
+            token: "944c7bd1a99a0e95c0a7768a1a4fb78f"
+        });
+    </script></body>
+</html>
