@@ -5,7 +5,7 @@ Inicialmente o plugin está focado no HTML semântico. O HTML semântico é um i
 
 Ainda assim, antes de entrar de fato no uso de diretrizes como a WCAG e especificações como WAI-ARIA, é importante que o ponto de partida seja o HTML semântico. Considerando isso, [criamos alguns templates que já estão sendo tratados pelo `a11y-refactoring`](https://github.com/easy-software-ufal/a11y-refactoring/blob/master/templates.md).
 
-Para visualizar os resultados das avaliações realizadas pelo plugin, acesse o [diretório de avalizações](https://github.com/easy-software-ufal/a11y-refactoring/tree/master/evaluations).
+Para visualizar os resultados das avaliações realizadas pelo plugin, acesse o [diretório de avaliações](https://github.com/easy-software-ufal/a11y-refactoring/tree/master/evaluations).
 ## :white_check_mark: Transformações realizadas pelo `a11y-refactoring`
 Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que caso elas já possuam os atributos necessários, não adicione-os novamente.
 - Definição da linguagem do documento
