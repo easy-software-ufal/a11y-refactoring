@@ -6,7 +6,7 @@
  */
 const addAltAttr = (html) => {
   const regex = /<img(?![^>]*alt=)[^>]*>/gi
-  return html.replace(regex, (match) => match.replace(/\/?>/, ' alt=""$&'))
+  return html.replace(regex, (match) => match.replace(/\/?>/, ` alt=""$&`))
 }
 
 module.exports = addAltAttr

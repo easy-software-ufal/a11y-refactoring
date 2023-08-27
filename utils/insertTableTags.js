@@ -6,36 +6,30 @@
  */
 const insertTableTags = (html) => {
   const regex = /<table\b[^>]*>(.*?)<\/table>/s
-  const match = html.match(regex)
+  return html.replace(regex, (match, tableContent) => {
+    if (/thead/i.test(tableContent) && /tbody/i.test(tableContent)) {
+      return match
+    }
 
-  if (!match) {
-    return html
-  }
-
-  const tableContent = match[1]
-
-  if (/thead/i.test(tableContent) && /tbody/i.test(tableContent)) {
-    return html
-  }
-
-  const newTableContent = `
+    let newTableContent = `
       <thead>
         ${
-          /tr/i.test(tableContent)
+          /<tr/i.test(tableContent)
             ? tableContent.match(/<tr[\s\S]*?<\/tr>/i) || ""
             : ""
         }
       </thead>
       <tbody>
         ${
-          /tr/i.test(tableContent)
+          /<tr/i.test(tableContent)
             ? tableContent.replace(/<tr[\s\S]*?<\/tr>/i, "")
             : tableContent
         }
       </tbody>
     `
 
-  return html.replace(regex, `<table>${newTableContent}</table>`)
+    return `<table>${newTableContent}</table>`
+  })
 }
 
 module.exports = insertTableTags

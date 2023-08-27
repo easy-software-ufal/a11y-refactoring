@@ -10,12 +10,7 @@ const addTargetBlank = (html) => {
       return match
     } else {
       const insertIndex = match.lastIndexOf(">")
-      return `${match.slice(
-        0,
-        insertIndex
-      )} target="_blank" title="Link para site externo (abre numa nova janela)"${match.slice(
-        insertIndex
-      )}`
+      return `${match.slice(0, insertIndex)} target="_blank"  title="Link para site externo (abre numa nova janela)"${match.slice(insertIndex)}`
     }
   })
 }
