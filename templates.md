@@ -18,3 +18,7 @@ Além disso, o HTML semântico também ajuda os desenvolvedores a criar páginas
 ![image](https://github.com/easy-software-ufal/a11y-refactoring/assets/36773331/8674ef7c-9e26-40c4-979a-86cbb68e5165)
 - _headTag_ e _bodyTag_ representam as tags _thead_ e _tbody_, respectivamente
   - Essas tags são inseridas de acordo com as tags _<th>_ e _<td>_ internas
+
+## 5. Inserção do atributo _title_ na tag
+![image](https://github.com/easy-software-ufal/a11y-refactoring/assets/36773331/ceb1a4cc-c3bb-46b5-9141-8672551d333f)
+
