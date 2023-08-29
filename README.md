@@ -21,6 +21,9 @@ Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que cas
   
 - Não abrir novas instâncias sem a solicitação do usuário
   - Segundo a [WCAG 2.0 Critério de Sucesso 3.2.5](https://www.w3.org/Translations/WCAG20-pt-br/#consistent-behavior), o usuário deve ser informado por meio de texto do link caso seja necessário sair da página, assim ele pode decidir se quer acessar o link e saberá que se trata de uma nova aba ou janela. Essa informação é definida pela <i>tag</i> `<a>`.
+
+- Rotular frames
+  - Ainda que o iframe possa ter um título interno próprio, usualmente um leitor de tela para na borda do quadro e declara a função do elemento como "frame", além de anunciar seu nome acessível determinado pelo atributo title. Isso dá ao usuário a opção de entrar ou não no frame.
   
 ## ⚙️ Como executar a ferramenta localmente
 1. Faça o clone do projeto e rode o `npm i` no diretório criado
