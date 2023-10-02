@@ -1,14 +1,21 @@
 /**
- * Function responsible for adding the title
- * attribute to iframes in the page's html
- * @param {*} html A string containing the html of the page
- * @returns A string with html after adding title attribute to iframes
+ * Function to add a title attribute to all <iframe> elements in a document object
+ * which do not already have a title attribute.
+ * 
+ * @param {Object} document - The document object representing the HTML document.
  */
-const addTitleToIframes = (html) => {
-  const regex = /<iframe(?![^>]*title=)[^>]*>/gi
-  return html.replace(regex, (match) =>
-    match.replace(/\/?>/, ` title=""$&`)
-  )
+const addTitleToIframes = (document) => {
+  try {
+    // Select all <iframe> tags in the document that do not have a title attribute
+    document.querySelectorAll('iframe:not([title])').forEach(iframe => {
+      // Add an empty title attribute to each selected <iframe> tag
+      iframe.setAttribute('title', '')
+    })
+  } catch (error) {
+    // Log any errors encountered and re-throw them
+    console.error(`Error adding title attribute to iframes: ${error.message}`)
+    throw error
+  }
 }
 
 module.exports = addTitleToIframes
