@@ -9,11 +9,11 @@ const insertCharsetMeta = require('./insertCharsetMeta')
 const addTitleToIframes = require('./addTitleToIframes')
 const writeToFile = require('./writeToFile')
 const getLangParameter = require('./getLangParameter')
+const addAriaLabelToInteractiveElements = require('./addAriaLabelToInteractiveElements') // 1. Import the function
 const addAriaLabelToInputs = require('./addAriaLabelToInputs')
 
 /**
  * Function to process and save an HTML file opened in the VSCode editor.
- * It reads the HTML file, modifies it using different utility functions and then writes the modified HTML back to the file.
  * 
  * @param {Object} vscodeDocument - Represents the opened document in VSCode editor.
  */
@@ -35,9 +35,10 @@ const processAndSaveHtmlFile = async (vscodeDocument) => {
     enhanceLinkAccessibility(document)
     insertTableSectionTags(document)
     addAltToImages(document)
-    addAriaLabelToInputs(document)
     addLangToHtmlTag(document, langParam)
-
+    addAriaLabelToInteractiveElements(document) 
+    addAriaLabelToInputs(document) 
+    
     // Serialize the modified document object back into an HTML string
     const modifiedHtml = dom.serialize()
 
