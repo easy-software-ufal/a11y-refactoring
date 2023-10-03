@@ -9,8 +9,14 @@ const insertCharsetMeta = require('./insertCharsetMeta')
 const addTitleToIframes = require('./addTitleToIframes')
 const writeToFile = require('./writeToFile')
 const getLangParameter = require('./getLangParameter')
-const addAriaLabelToInteractiveElements = require('./addAriaLabelToInteractiveElements') // 1. Import the function
+const addAriaLabelToInteractiveElements = require('./addAriaLabelToInteractiveElements')
 const addAriaLabelToInputs = require('./addAriaLabelToInputs')
+const {
+  replaceDivsWithHeader,
+  replaceDivsWithNav,
+  replaceDivsWithMain
+} = require('./replaceDivsWithSemanticTags')
+
 
 /**
  * Function to process and save an HTML file opened in the VSCode editor.
@@ -28,7 +34,7 @@ const processAndSaveHtmlFile = async (vscodeDocument) => {
     // Parse the HTML string into a JSDOM object to facilitate modifications
     const dom = new JSDOM(html)
     const document = dom.window.document
-    
+
     // Call various utility functions to modify the HTML document object
     addTitleToIframes(document)
     insertCharsetMeta(document)
@@ -36,15 +42,18 @@ const processAndSaveHtmlFile = async (vscodeDocument) => {
     insertTableSectionTags(document)
     addAltToImages(document)
     addLangToHtmlTag(document, langParam)
-    addAriaLabelToInteractiveElements(document) 
-    addAriaLabelToInputs(document) 
-    
+    addAriaLabelToInteractiveElements(document)
+    addAriaLabelToInputs(document)
+    replaceDivsWithHeader(document)
+    replaceDivsWithNav(document)
+    replaceDivsWithMain(document)
+
     // Serialize the modified document object back into an HTML string
     const modifiedHtml = dom.serialize()
 
     // Write the modified HTML string back to the file
     await writeToFile(vscodeDocument.fileName, modifiedHtml)
-    
+
   } catch (error) {
     // Log any errors encountered during the process
     console.error(`Error refactoring the file: ${error.message}`)
