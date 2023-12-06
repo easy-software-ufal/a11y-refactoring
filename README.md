@@ -1,29 +1,54 @@
-# :bulb: Plugin de refatoramento para acessibilidade web
-O `a11y-refactoring` é um plugin para [VSCode](https://code.visualstudio.com/) com o objetivo de refatorar um código HTML em que, caso não haja atributos essenciais para leitores de tela em algumas <i>tags</i> HTML, insira-os.
-
-Inicialmente o plugin está focado no HTML semântico. O HTML semântico é um importante primeiro passo na construção de páginas web acessíveis, mas nem sempre é suficiente para atender a todas as necessidades de acessibilidade. Em alguns casos, é necessário utilizar outras tecnologias, como as diretrizes de acessibilidade WCAG (Web Content Accessibility Guidelines) e as especificações de acessibilidade do WAI-ARIA (Web Accessibility Initiative - Accessible Rich Internet Applications).
-
-Ainda assim, antes de entrar de fato no uso de diretrizes como a WCAG e especificações como WAI-ARIA, é importante que o ponto de partida seja o HTML semântico. Considerando isso, [criamos alguns templates que já estão sendo tratados pelo `a11y-refactoring`](https://github.com/easy-software-ufal/a11y-refactoring/blob/master/templates.md).
-
-Para visualizar os resultados das avaliações realizadas pelo plugin, acesse o [diretório de avaliações](https://github.com/easy-software-ufal/a11y-refactoring/tree/master/evaluations).
 ## :white_check_mark: Transformações realizadas pelo `a11y-refactoring`
 Atualmente o plugin está refatorando algumas <i>tags</i> e considerando que caso elas já possuam os atributos necessários, não adicione-os novamente.
-- Definição da linguagem do documento
-  - No início do documento HTML podemos definir a linguagem da página usando `<html lang='pt-br'>`. Essa definição é um benefício não somente para tecnologias assistivas, mas também para SEO e ferramentas de tradução. No contexto das tecnologias assistivas, é possível definir o perfil de voz e conjunto de caracteres por meio da definição do atributo `lang`.
-  
-- Texto alternativo para tabelas
-  - Anteriormente estávamos usando o atributo `summary`, mas ele foi considerado obsoleto a partir do HTML5. O motivo é que este atributo não estava sendo utilizado de forma consistente pelos desenvolvedores web e também não era amplamente suportado pelos navegadores. 
-  - Em vez disso, estamos usando os elementos semânticos `<thead>` e `<tbody>` que são parte da estrutura HTML da tabela e ajudam a organizar o conteúdo em seções lógicas. Isso é importante para usuários que utilizam tecnologias assistivas, como leitores de tela, que podem navegar pelas seções da tabela com mais facilidade. O uso desses elementos também ajuda a deixar a tabela mais clara e fácil de entender visualmente.
+# a11y-refactoring
 
-- Texto alternativo para imagens
-  - As imagens devem possuir o atributo `alt` com um texto alternativo que possua uma descrição do seu conteúdo. Se a tag `<img>` tiver apenas o atributo `src`, o leitor pode ou não ler o nome do arquivo, podendo ser bem confuso.
-  - Caso as imagens sejam decorativas, não tendo a necessidade de uma descrição por texto alternativo, então é recomendado incluí-las via `background-image` através de CSS.
-  
-- Não abrir novas instâncias sem a solicitação do usuário
-  - Segundo a [WCAG 2.0 Critério de Sucesso 3.2.5](https://www.w3.org/Translations/WCAG20-pt-br/#consistent-behavior), o usuário deve ser informado por meio de texto do link caso seja necessário sair da página, assim ele pode decidir se quer acessar o link e saberá que se trata de uma nova aba ou janela. Essa informação é definida pela <i>tag</i> `<a>`.
+O `a11y-refactoring` é um plugin para [VSCode](https://code.visualstudio.com/) desenvolvido para melhorar a acessibilidade de páginas web, automatizando a refatoração de código HTML. Este plugin é particularmente focado em tornar o conteúdo web mais acessível para pessoas cegas e usuários de leitores de tela.
 
-- Rotular frames
-  - Ainda que o iframe possa ter um título interno próprio, usualmente um leitor de tela para na borda do quadro e declara a função do elemento como "frame", além de anunciar seu nome acessível determinado pelo atributo title. Isso dá ao usuário a opção de entrar ou não no frame.
+Para visualizar os resultados das avaliações realizadas pelo plugin, acesse o [diretório de avaliações](https://github.com/easy-software-ufal/a11y-refactoring/tree/master/evaluations). Cada caso avaliado está sendo [tratado pelo `a11y-refactoring` com base em alguns templates](https://github.com/easy-software-ufal/a11y-refactoring/blob/master/templates.m).
+
+## Transformações Realizadas pelo Plugin
+
+### Melhoria da Semântica do HTML
+- **Uso de Tags Semânticas**: Transforma `<div>` em tags semânticas como `<header>`, `<nav>`, e `<main>`. Isso permite uma navegação mais intuitiva por leitores de tela, crucial para usuários cegos. (WCAG 2.1, Seção 1.3.1: [Info and Relationships](https://www.w3.org/TR/WCAG21/#info-and-relationships))
+
+### Textos Alternativos e Rótulos Acessíveis
+- **Adição de Textos Alternativos em Imagens**: Insere atributos `alt` em imagens, fornecendo descrições essenciais para leitores de tela. Vital para a compreensão de conteúdo visual por usuários cegos. (WCAG 2.1, Critério de Sucesso 1.1.1: [Non-text Content](https://www.w3.org/TR/WCAG21/#non-text-content))
+- **Rótulos ARIA em Elementos de Entrada e Interativos**: Implementa `aria-label` em elementos sem rótulos visíveis, garantindo que leitores de tela possam comunicar sua função e propósito. (WCAG 2.1, Critério de Sucesso 4.1.2: [Name, Role, Value](https://www.w3.org/TR/WCAG21/#name-role-value))
+
+### Estrutura e Acessibilidade de Tabelas
+- **Reestruturação de Tabelas**: Inclui `<thead>` e `<tbody>` para tornar tabelas mais compreensíveis para leitores de tela, facilitando a navegação para usuários cegos. (WCAG 2.1, Seção 1.3.1)
+
+### Acessibilidade em Links e Frames
+- **Melhoria na Acessibilidade de Links Externos**: Adiciona avisos em links que abrem em nova aba, ajudando usuários cegos a entender que o link abrirá uma nova janela ou guia. (WCAG 2.0, Critério de Sucesso 3.2.5: [Change on Request](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-no-extreme-changes-context.html))
+- **Rótulos em Iframes**: Insere títulos em iframes, fornecendo contexto para usuários cegos sobre conteúdos incorporados. (WCAG 2.1, Critério de Sucesso 4.1.2)
+
+### Definição da Linguagem do Documento
+- **Configuração do Atributo 'lang'**: Define o idioma da página, melhorando a pronúncia e dialeto dos leitores de tela, crucial para a compreensibilidade por usuários cegos. (WCAG 2.1, Critério de Sucesso 3.1.1: [Language of Page](https://www.w3.org/TR/WCAG21/#language-of-page))
+
+### Melhoria na Codificação de Caracteres
+- **Inserção de Metatag de Caracteres**: Garante a correta codificação de caracteres, essencial para a leitura precisa do texto por leitores de tela. (WCAG 2.1, Critério de Sucesso 4.1.1: [Parsing](https://www.w3.org/TR/WCAG21/#parsing))
+
+## Importância das Diretrizes WCAG e WAI-ARIA
+
+Este plugin foi cuidadosamente desenvolvido para seguir as diretrizes da WCAG e as especificações WAI-ARIA, assegurando que o conteúdo da web seja acessível a todos, incluindo pessoas cegas e usuários de tecnologias assistivas.
+
+## Como o Plugin Funciona
+
+O `a11y-refactoring` facilita a implementação de práticas de acessibilidade em projetos web no ambiente VSCode. Ele identifica e refatora automaticamente elementos que não estão em conformidade com as diretrizes de acessibilidade.
+
+## Contribuição e Feedback
+
+Suas contribuições e feedback são extremamente valiosos! Se você tem ideias para melhorar o plugin ou quer contribuir com novas funcionalidades, sinta-se à vontade para colaborar.
+
+## Recursos Adicionais
+
+Para mais informações sobre acessibilidade na web, confira:
+
+- [Diretrizes WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [Especificações WAI-ARIA](https://www.w3.org/TR/wai-aria/)
+
+---
+
   
 ## ⚙️ Como executar a ferramenta localmente
 1. Faça o clone do projeto e rode o `npm i` no diretório criado
