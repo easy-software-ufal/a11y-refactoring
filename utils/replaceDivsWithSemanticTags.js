@@ -5,11 +5,14 @@
  * @param {HTMLDocument} document - The DOM document object.
  */
 function replaceDivsWithHeader(document) {
-    const mainHeaderDiv = document.querySelector('div > h1')
+    const mainHeaderDiv = document.querySelector('div > h1');
     if (mainHeaderDiv && mainHeaderDiv.parentNode && mainHeaderDiv.parentNode.tagName.toLowerCase() === 'div') {
-        const header = document.createElement('header')
-        header.innerHTML = mainHeaderDiv.parentNode.innerHTML
-        mainHeaderDiv.parentNode.parentNode.replaceChild(header, mainHeaderDiv.parentNode)
+        const header = document.createElement('header');
+        Array.from(mainHeaderDiv.parentNode.attributes).forEach(attr => {
+            header.setAttribute(attr.name, attr.value);
+        });
+        header.innerHTML = mainHeaderDiv.parentNode.innerHTML;
+        mainHeaderDiv.parentNode.parentNode.replaceChild(header, mainHeaderDiv.parentNode);
     }
 }
 
@@ -20,14 +23,17 @@ function replaceDivsWithHeader(document) {
  * @param {HTMLDocument} document - The DOM document object.
  */
 function replaceDivsWithNav(document) {
-    const navDivs = document.querySelectorAll('div > ul, div > ol')
+    const navDivs = document.querySelectorAll('div > ul, div > ol');
     navDivs.forEach(div => {
         if (div.querySelector('a') && div.parentNode && div.parentNode.tagName.toLowerCase() === 'div') {
-            const nav = document.createElement('nav')
-            nav.innerHTML = div.parentNode.innerHTML
-            div.parentNode.parentNode.replaceChild(nav, div.parentNode)
+            const nav = document.createElement('nav');
+            Array.from(div.parentNode.attributes).forEach(attr => {
+                nav.setAttribute(attr.name, attr.value);
+            });
+            nav.innerHTML = div.parentNode.innerHTML;
+            div.parentNode.parentNode.replaceChild(nav, div.parentNode);
         }
-    })
+    });
 }
 
 /**
@@ -37,11 +43,14 @@ function replaceDivsWithNav(document) {
  * @param {HTMLDocument} document - The DOM document object.
  */
 function replaceDivsWithMain(document) {
-    const divs = document.querySelectorAll('body > div:not(header):not(nav)')
+    const divs = document.querySelectorAll('body > div:not(header):not(nav)');
     if (divs.length > 0 && divs[0].parentNode) {
-        const main = document.createElement('main')
-        main.innerHTML = divs[0].innerHTML
-        divs[0].parentNode.replaceChild(main, divs[0])
+        const main = document.createElement('main');
+        Array.from(divs[0].attributes).forEach(attr => {
+            main.setAttribute(attr.name, attr.value);
+        });
+        main.innerHTML = divs[0].innerHTML;
+        divs[0].parentNode.replaceChild(main, divs[0]);
     }
 }
 

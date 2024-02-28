@@ -8,13 +8,21 @@
  */
 const addAriaLabelToInteractiveElements = (document) => {
     try {
-        // Handle buttons and links with role="button"
         document.querySelectorAll('button, a[role="button"]').forEach(element => {
-            // If the element does not have an aria-label
-            if (!element.getAttribute('aria-label')) {
-                // If it has a data-label, use that as the aria-label
+            if (!element.getAttribute('aria-label') && !element.textContent.trim()) {
+                // Check for a data-label first
                 if (element.getAttribute('data-label')) {
                     element.setAttribute('aria-label', element.getAttribute('data-label'))
+                }
+                // If no data-label, check for a title
+                else if (element.getAttribute('title')) {
+                    element.setAttribute('aria-label', element.getAttribute('title'))
+                }
+                // If no title, check for an id
+                else if (element.getAttribute('id')) {
+                    // Assuming the id can be a meaningful descriptor. You might want to transform it into a more readable format
+                    const readableId = element.getAttribute('id').replace(/-/g, ' ').replace(/_/g, ' ')
+                    element.setAttribute('aria-label', readableId)
                 }
                 // Otherwise, set a default aria-label
                 else {

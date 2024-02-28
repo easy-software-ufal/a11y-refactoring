@@ -11,18 +11,17 @@
  */
 const addAriaLabelToInputs = (document) => {
     try {
-        // Query the document for all input fields and textareas
         document.querySelectorAll('input, textarea').forEach(field => {
-            // Check if the field has associated labels. If it doesn't, proceed to add an aria-label.
-            if (!field.labels.length) {
-                // Get the value of the placeholder attribute of the field
-                const placeholder = field.getAttribute('placeholder')
-                // If a placeholder is available, set its value as the aria-label of the field
-                if (placeholder) field.setAttribute('aria-label', placeholder)
+            if (!field.getAttribute('aria-label')) {
+                let genericAriaLabel = field.getAttribute('placeholder') || field.getAttribute('name') || field.getAttribute('id')
+                
+                if (genericAriaLabel) {
+                    genericAriaLabel = genericAriaLabel.replace(/[_-]/g, ' ').replace(/\b\w/g, char => char.toUpperCase())
+                    field.setAttribute('aria-label', genericAriaLabel)
+                }
             }
         })
     } catch (error) {
-        // Log and throw any errors encountered during the process
         console.error(`Error adding aria-label to inputs: ${error.message}`)
         throw error
     }
